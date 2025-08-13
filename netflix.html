@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Netflix Landing Page</title>
+  <title>Netflix & Sign-up</title>
   <style>
     * {
       margin: 0;
@@ -54,12 +54,12 @@
       border-radius: 3px;
     }
 
-    .hero {
+    .hero, .signup {
       text-align: center;
       margin-top: 100px;
     }
 
-    .hero h1 {
+    .hero h1, .signup h1 {
       font-size: 3em;
       margin-bottom: 20px;
     }
@@ -69,21 +69,36 @@
       margin-bottom: 30px;
     }
 
-    .hero input {
+    .hero input, .signup input {
       padding: 10px;
       font-size: 16px;
       width: 300px;
       border: none;
       outline: none;
+      margin: 5px 0;
     }
 
-    .hero button {
+    .hero button, .signup button {
       padding: 10px 20px;
       background-color: #e50914;
       color: white;
       font-size: 16px;
       border: none;
-      margin-left: 10px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    .signup {
+      display: none;
+    }
+
+    .signup p {
+      margin-top: 15px;
+    }
+
+    .signup a {
+      color: #e50914;
       cursor: pointer;
     }
   </style>
@@ -93,17 +108,39 @@
   <div class="container">
     <div class="header">
       <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="Netflix Logo">
-      <button>Sign In</button>
+      <button onclick="showSignup()">Sign In</button>
     </div>
 
-    <div class="hero">
+   
+    <div class="hero" id="landing">
       <h1>Unlimited movies, TV shows, and more.</h1>
       <h2>Watch anywhere. Cancel anytime.</h2>
       <p>Ready to watch? Enter your email to create or restart your membership.</p>
       <br>
       <input type="email" placeholder="Email address">
-      <button>Get Started &gt;</button>
+      <button onclick="showSignup()">Get Started &gt;</button>
+    </div>
+
+    
+    <div class="signup" id="signup">
+      <h1>Sign Up</h1>
+      <input type="text" placeholder="Full Name">
+      <input type="email" placeholder="Email address">
+      <input type="password" placeholder="Password">
+      <button onclick="alert('Account Created!')">Create Account</button>
+      <p>Already have an account? <a onclick="showLanding()">Go Back</a></p>
     </div>
   </div>
+
+  <script>
+    function showSignup() {
+      document.getElementById("landing").style.display = "none";
+      document.getElementById("signup").style.display = "block";
+    }
+    function showLanding() {
+      document.getElementById("signup").style.display = "none";
+      document.getElementById("landing").style.display = "block";
+    }
+  </script>
 </body>
 </html>
